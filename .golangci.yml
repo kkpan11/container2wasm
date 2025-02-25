@@ -1,0 +1,30 @@
+linters:
+  enable:
+    - staticcheck
+    - unconvert
+    - gofmt
+    - goimports
+    - revive
+    - ineffassign
+    - govet
+    - unused
+    - misspell
+  disable:
+    - errcheck
+
+run:
+  timeout: 4m
+
+issues:
+  exclude-rules:
+    - linters:
+        - revive
+      text: "unused-parameter"
+    - linters:
+        - revive
+      text: "redefines-builtin-id"
+  exclude-dirs:
+    - config
+    - docs
+    - examples
+    - out

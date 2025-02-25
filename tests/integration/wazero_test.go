@@ -21,7 +21,7 @@ func TestWazero(t *testing.T) {
 			Name:    "wazero-hello",
 			Runtime: "wazero-test",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Architecture: utils.X86_64},
+				{Image: "alpine:3.17", Architecture: utils.X8664},
 				{Image: "riscv64/alpine:20221110", ConvertOpts: []string{"--target-arch=riscv64"}, Architecture: utils.RISCV64},
 			},
 			Args: utils.StringFlags("echo", "-n", "hello"),
@@ -31,7 +31,7 @@ func TestWazero(t *testing.T) {
 			Name:    "wazero-sh",
 			Runtime: "wazero-test",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Architecture: utils.X86_64},
+				{Image: "alpine:3.17", Architecture: utils.X8664},
 				{Image: "riscv64/alpine:20221110", ConvertOpts: []string{"--target-arch=riscv64"}, Architecture: utils.RISCV64},
 			},
 			Args: utils.StringFlags("sh"),
@@ -41,7 +41,7 @@ func TestWazero(t *testing.T) {
 			Name:    "wazero-mapdir",
 			Runtime: "wazero-test",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Architecture: utils.X86_64},
+				{Image: "alpine:3.17", Architecture: utils.X8664},
 				{Image: "riscv64/alpine:20221110", ConvertOpts: []string{"--target-arch=riscv64"}, Architecture: utils.RISCV64},
 			},
 			Prepare: func(t *testing.T, env utils.Env) {
@@ -65,7 +65,7 @@ func TestWazero(t *testing.T) {
 			Name:    "wazero-files",
 			Runtime: "wazero-test",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Architecture: utils.X86_64},
+				{Image: "alpine:3.17", Architecture: utils.X8664},
 				{Image: "riscv64/alpine:20221110", ConvertOpts: []string{"--target-arch=riscv64"}, Architecture: utils.RISCV64},
 			},
 			Args: utils.StringFlags("sh"),
@@ -78,7 +78,7 @@ func TestWazero(t *testing.T) {
 			Name:    "wazero-mapdir-io",
 			Runtime: "wazero-test",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Architecture: utils.X86_64},
+				{Image: "alpine:3.17", Architecture: utils.X8664},
 				{Image: "riscv64/alpine:20221110", ConvertOpts: []string{"--target-arch=riscv64"}, Architecture: utils.RISCV64},
 			},
 			Prepare: func(t *testing.T, env utils.Env) {
@@ -116,7 +116,7 @@ func TestWazero(t *testing.T) {
 			Name:    "wazero-env",
 			Runtime: "wazero-test",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Architecture: utils.X86_64},
+				{Image: "alpine:3.17", Architecture: utils.X8664},
 				{Image: "riscv64/alpine:20221110", ConvertOpts: []string{"--target-arch=riscv64"}, Architecture: utils.RISCV64},
 			},
 			RuntimeOpts: utils.StringFlags("--env=AAA=hello", "--env=BBB=world"),
@@ -127,7 +127,7 @@ func TestWazero(t *testing.T) {
 			Name:    "wazero-net-proxy",
 			Runtime: "c2w-net-proxy-test",
 			Inputs: []utils.Input{
-				{Image: "debian-wget-x86-64", Architecture: utils.X86_64, Dockerfile: `
+				{Image: "debian-wget-x86-64", Architecture: utils.X8664, Dockerfile: `
 FROM debian:sid-slim
 RUN apt-get update && apt-get install -y wget
 `},
@@ -168,7 +168,7 @@ RUN apt-get update && apt-get install -y wget
 		{
 			Name: "wazero-net",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Architecture: utils.X86_64},
+				{Image: "alpine:3.17", Architecture: utils.X8664},
 				{Image: "riscv64/alpine:20221110", ConvertOpts: []string{"--target-arch=riscv64"}, Architecture: utils.RISCV64},
 			},
 			Prepare: func(t *testing.T, env utils.Env) {
@@ -200,7 +200,7 @@ RUN apt-get update && apt-get install -y wget
 		{
 			Name: "wazero-net-port",
 			Inputs: []utils.Input{
-				{Image: "httphello-alpine-x86-64", Architecture: utils.X86_64, Dockerfile: `
+				{Image: "httphello-alpine-x86-64", Architecture: utils.X8664, Dockerfile: `
 FROM golang:1.21-bullseye AS dev
 COPY ./tests/httphello /httphello
 WORKDIR /httphello
@@ -254,7 +254,7 @@ ENTRYPOINT ["/httphello", "0.0.0.0:80"]
 		{
 			Name: "wazero-net-mac",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Architecture: utils.X86_64},
+				{Image: "alpine:3.17", Architecture: utils.X8664},
 				{Image: "riscv64/alpine:20221110", ConvertOpts: []string{"--target-arch=riscv64"}, Architecture: utils.RISCV64},
 			},
 			Prepare: func(t *testing.T, env utils.Env) {
@@ -292,8 +292,8 @@ ENTRYPOINT ["/httphello", "0.0.0.0:80"]
 			Want: utils.WantPromptWithWorkdir("/ # ",
 				func(workdir string) [][2]string {
 					return [][2]string{
-						[2]string{fmt.Sprintf("wget -q -O - http://%s:%d/\n", hostVirtIP, utils.ReadInt(t, filepath.Join(workdir, "httphello-port"))), "hello"},
-						[2]string{`/bin/sh -c 'ip a show eth0 | grep ether | sed -E "s/ +/ /g" | cut -f 3 -d " " | tr -d "\n"'` + "\n", utils.ReadString(t, filepath.Join(workdir, "mac"))},
+						{fmt.Sprintf("wget -q -O - http://%s:%d/\n", hostVirtIP, utils.ReadInt(t, filepath.Join(workdir, "httphello-port"))), "hello"},
+						{`/bin/sh -c 'ip a show eth0 | grep ether | sed -E "s/ +/ /g" | cut -f 3 -d " " | tr -d "\n"'` + "\n", utils.ReadString(t, filepath.Join(workdir, "mac"))},
 					}
 				},
 			),
@@ -302,8 +302,8 @@ ENTRYPOINT ["/httphello", "0.0.0.0:80"]
 			Name:    "wazero-imagemounter-registry",
 			Runtime: "imagemounter-test",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Mirror: true, Architecture: utils.X86_64, ConvertOpts: []string{"--external-bundle"}, External: true},
-				{Image: "ghcr.io/stargz-containers/ubuntu:22.04-esgz", Mirror: true, Architecture: utils.X86_64, ConvertOpts: []string{"--external-bundle"}, External: true},
+				{Image: "alpine:3.17", Mirror: true, Architecture: utils.X8664, ConvertOpts: []string{"--external-bundle"}, External: true},
+				{Image: "ghcr.io/stargz-containers/ubuntu:22.04-esgz", Mirror: true, Architecture: utils.X8664, ConvertOpts: []string{"--external-bundle"}, External: true},
 				{Image: "riscv64/alpine:20221110", Mirror: true, Architecture: utils.RISCV64, ConvertOpts: []string{"--target-arch=riscv64", "--external-bundle"}, External: true},
 			},
 			Prepare: func(t *testing.T, env utils.Env) {
@@ -331,8 +331,8 @@ ENTRYPOINT ["/httphello", "0.0.0.0:80"]
 			Name:    "wazero-imagemounter-store",
 			Runtime: "imagemounter-test",
 			Inputs: []utils.Input{
-				{Image: "alpine:3.17", Store: "testimage", Architecture: utils.X86_64, ConvertOpts: []string{"--external-bundle"}, External: true},
-				{Image: "ghcr.io/stargz-containers/ubuntu:22.04-esgz", Store: "testimage", Architecture: utils.X86_64, ConvertOpts: []string{"--external-bundle"}, External: true},
+				{Image: "alpine:3.17", Store: "testimage", Architecture: utils.X8664, ConvertOpts: []string{"--external-bundle"}, External: true},
+				{Image: "ghcr.io/stargz-containers/ubuntu:22.04-esgz", Store: "testimage", Architecture: utils.X8664, ConvertOpts: []string{"--external-bundle"}, External: true},
 				{Image: "riscv64/alpine:20221110", Store: "testimage", Architecture: utils.RISCV64, ConvertOpts: []string{"--target-arch=riscv64", "--external-bundle"}, External: true},
 			},
 			Prepare: func(t *testing.T, env utils.Env) {
