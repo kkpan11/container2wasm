@@ -101,9 +101,8 @@ func rootAction(clicontext *cli.Context) error {
 	if arg1 == "" {
 		if clicontext.Bool("external-bundle") {
 			return fmt.Errorf("specify output image name")
-		} else {
-			return fmt.Errorf("specify image name")
 		}
+		return fmt.Errorf("specify image name")
 	}
 	var outputPath string
 	var needsImg bool

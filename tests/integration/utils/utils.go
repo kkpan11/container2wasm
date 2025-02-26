@@ -27,14 +27,14 @@ const ImageMounterBin = "/opt/imagemounter.wasm"
 type Architecture int
 
 const (
-	X86_64 Architecture = iota
+	X8664 Architecture = iota
 	RISCV64
 	AArch64
 )
 
 func archToString(t *testing.T, a Architecture) string {
 	switch a {
-	case X86_64:
+	case X8664:
 		return "x86_64"
 	case RISCV64:
 		return "riscv64"

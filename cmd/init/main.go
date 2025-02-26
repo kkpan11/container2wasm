@@ -454,10 +454,10 @@ func parseInfo(infoD []byte) (info runtimeFlags) {
 			for _, m := range mchs {
 				s := m[0] + 1
 				// spaces are quoted so we restore them here
-				info.args = append(info.args, strings.ReplaceAll(string(o[prev:s]), "\\ ", " "))
+				info.args = append(info.args, strings.ReplaceAll(o[prev:s], "\\ ", " "))
 				prev = m[1]
 			}
-			info.args = append(info.args, strings.ReplaceAll(string(o[prev:]), "\\ ", " "))
+			info.args = append(info.args, strings.ReplaceAll(o[prev:], "\\ ", " "))
 		case "e":
 			info.entrypoint = []string{o}
 		case "env":

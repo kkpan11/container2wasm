@@ -390,7 +390,7 @@ func generateBootConfig(debug, debugInit bool, imageConfigPath, runtimeConfigPat
 	var cmdPreRun [][]string
 	if !noVmtouch {
 		cmdPreRun = [][]string{
-			[]string{"vmtouch", "-tv", "/sbin/runc", "/sbin/init"},
+			{"vmtouch", "-tv", "/sbin/runc", "/sbin/init"},
 		}
 	}
 	bootConfig := &inittype.BootConfig{
