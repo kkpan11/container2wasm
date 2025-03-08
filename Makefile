@@ -25,8 +25,13 @@ imagemounter.wasm:
 	cd extras/imagemounter ; GOOS=wasip1 GOARCH=wasm go build -o $(PREFIX)/imagemounter.wasm .
 
 install:
-	install -D -m 755 $(PREFIX)/c2w $(CMD_DESTDIR)/bin
-	install -D -m 755 $(PREFIX)/c2w-net $(CMD_DESTDIR)/bin
+	@if [ "$$(uname -s)" = "Darwin" ]; then \
+		install -m 755 $(PREFIX)/c2w $(CMD_DESTDIR)/bin; \
+		install -m 755 $(PREFIX)/c2w-net $(CMD_DESTDIR)/bin; \
+	else \
+		install -D -m 755 $(PREFIX)/c2w $(CMD_DESTDIR)/bin; \
+		install -D -m 755 $(PREFIX)/c2w-net $(CMD_DESTDIR)/bin; \
+	fi
 
 artifacts: clean
 	GOOS=linux GOARCH=amd64 make c2w c2w-net
