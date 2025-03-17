@@ -48,5 +48,11 @@ test:
 benchmark:
 	./tests/bench.sh
 
+vendor:
+	@go mod tidy
+	@cd ./extras/c2w-net-proxy/ ; go mod tidy
+	@cd ./extras/imagemounter/ ; go mod tidy
+	@cd ./tests/wazero/ ; go mod tidy
+
 clean:
 	rm -f $(CURDIR)/out/*
