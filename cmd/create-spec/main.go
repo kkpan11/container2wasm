@@ -21,7 +21,6 @@ import (
 	inittype "github.com/ktock/container2wasm/cmd/init/types"
 	"github.com/moby/sys/user"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
-	spec "github.com/opencontainers/image-spec/specs-go/v1"
 	specs "github.com/opencontainers/runtime-spec/specs-go"
 )
 
@@ -83,7 +82,7 @@ func main() {
 	}
 }
 
-func unpack(ctx context.Context, imgDir string, platform *spec.Platform, rootfs string) (io.Reader, error) {
+func unpack(ctx context.Context, imgDir string, platform *ocispec.Platform, rootfs string) (io.Reader, error) {
 	fmt.Println("Trying to unpack image as an OCI image")
 	if rootfs == "" {
 		return nil, fmt.Errorf("specify rootfs")
@@ -214,7 +213,7 @@ func isContainerManifest(manifest ocispec.Manifest) bool {
 	return true
 }
 
-func unpackDocker(ctx context.Context, imgDir string, platform *spec.Platform, rootfs string) (io.Reader, error) {
+func unpackDocker(ctx context.Context, imgDir string, platform *ocispec.Platform, rootfs string) (io.Reader, error) {
 	fmt.Println("Trying to unpack image as a docker image")
 	if rootfs == "" {
 		return nil, fmt.Errorf("specify rootfs")
@@ -280,7 +279,7 @@ func createSpec(r io.Reader, rootfs string, debug bool, debugInit bool, imageCon
 	if rootfs == "" {
 		return fmt.Errorf("rootfs path must be specified")
 	}
-	var config spec.Image
+	var config ocispec.Image
 	if err := json.NewDecoder(r).Decode(&config); err != nil {
 		return err
 	}
@@ -315,7 +314,7 @@ func createSpec(r io.Reader, rootfs string, debug bool, debugInit bool, imageCon
 	return nil
 }
 
-func generateSpec(config spec.Image, rootfs string) (_ *specs.Spec, err error) {
+func generateSpec(config ocispec.Image, rootfs string) (_ *specs.Spec, err error) {
 	ic := config.Config
 	ctdCtx := ctdnamespaces.WithNamespace(context.TODO(), "default")
 	p := "linux/riscv64"
