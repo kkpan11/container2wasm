@@ -2,7 +2,7 @@ module github.com/ktock/container2wasm
 
 go 1.23.0
 
-toolchain go1.23.2
+toolchain go1.24.1
 
 require (
 	github.com/containerd/containerd v1.7.27
@@ -12,7 +12,7 @@ require (
 	github.com/opencontainers/image-spec v1.1.1
 	github.com/opencontainers/runtime-spec v1.2.1
 	github.com/urfave/cli v1.22.16
-	golang.org/x/net v0.37.0
+	golang.org/x/net v0.38.0
 	gotest.tools/v3 v3.5.2
 )
 
