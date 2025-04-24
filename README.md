@@ -320,7 +320,9 @@ Re-compilation (and possibe re-implementation) of the application is needed.
 
 ## Acknowledgement
 
-- container2wasm itself is licensed under Apache 2.0 but the generated WASM image will include third-pirty softwares:
+- Copyright © contributors to container2wasm, established as container2wasm a Series of LF Projects, LLC
+
+- container2wasm itself is licensed under [Apache 2.0](https://github.com/container2wasm/container2wasm/blob/main/LICENSE) but the generated WASM image will include third-party software:
   - Bochs ([GNU Lesser General Public License v2.1](https://github.com/bochs-emu/Bochs/blob/master/LICENSE)) https://bochs.sourceforge.io/
     - needs patches to make it work with containers: https://github.com/ktock/Bochs
   - TinyEMU ([MIT License](https://opensource.org/license/mit/)) https://bellard.org/tinyemu/
@@ -335,7 +337,7 @@ Re-compilation (and possibe re-implementation) of the application is needed.
   - vmtouch ([license](https://github.com/hoytech/vmtouch/blob/master/LICENSE)): https://github.com/hoytech/vmtouch
   - BusyBox ([GNU General Public License version 2](https://www.busybox.net/license.html)): https://git.busybox.net/busybox
 
-- On-browser example relies on the following softwares.
+- On-browser example relies on the following software:
   - xterm-pty ([MIT License](https://github.com/mame/xterm-pty/blob/main/LICENSE.txt)): https://github.com/mame/xterm-pty
   - `browser_wasi_shim` (either of [MIT License](https://github.com/bjorn3/browser_wasi_shim/blob/main/LICENSE-MIT) and [Apache License 2.0](https://github.com/bjorn3/browser_wasi_shim/blob/main/LICENSE-APACHE)): https://github.com/bjorn3/browser_wasi_shim
   - `gvisor-tap-vsock` ([Apache License 2.0](https://github.com/containers/gvisor-tap-vsock/blob/main/LICENSE)): https://github.com/containers/gvisor-tap-vsock
