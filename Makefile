@@ -7,6 +7,7 @@ REVISION=$(shell git rev-parse HEAD)$(shell if ! git diff --no-ext-diff --quiet 
 GO_EXTRA_LDFLAGS=-extldflags '-static'
 GO_LD_FLAGS=-ldflags '-s -w -X $(PKG)/version.Version=$(VERSION) -X $(PKG)/version.Revision=$(REVISION) $(GO_EXTRA_LDFLAGS)'
 GO_BUILDTAGS=-tags "osusergo netgo static_build"
+GO_MODULE_DIRS=$(shell find . -type f -name go.mod -exec dirname {} \;)
 
 all: c2w c2w-net
 
@@ -49,10 +50,14 @@ benchmark:
 	./tests/bench.sh
 
 vendor:
-	@go mod tidy
-	@cd ./extras/c2w-net-proxy/ ; go mod tidy
-	@cd ./extras/imagemounter/ ; go mod tidy
-	@cd ./tests/wazero/ ; go mod tidy
+	$(foreach dir,$(GO_MODULE_DIRS),(cd $(dir) && go mod tidy) || exit 1;)
+
+validate-vendor:
+	$(eval TMPDIR := $(shell mktemp -d))
+	cp -R $(CURDIR) ${TMPDIR}
+	(cd ${TMPDIR}/container2wasm && make vendor)
+	diff -r -u -q $(CURDIR) ${TMPDIR}/container2wasm
+	rm -rf ${TMPDIR}
 
 clean:
 	rm -f $(CURDIR)/out/*

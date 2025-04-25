@@ -1,4 +1,4 @@
-module c2w-net-proxy-test
+module imagemounter-test
 
 go 1.22.0
 

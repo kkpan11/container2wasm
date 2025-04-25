@@ -1,4 +1,4 @@
-module stack
+module imagemounter
 
 go 1.23.0
 
