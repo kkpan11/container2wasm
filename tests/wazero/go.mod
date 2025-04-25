@@ -1,4 +1,4 @@
-module github.com/ktock/container2wasm/examples/wazero
+module wazero
 
 go 1.23.0
 
