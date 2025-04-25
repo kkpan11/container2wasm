@@ -58,6 +58,9 @@ jobs:
     name: Linter
     steps:
     - uses: actions/checkout@v4
+    - name: validate vendor
+      run: |
+        make validate-vendor
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v7
       with:
