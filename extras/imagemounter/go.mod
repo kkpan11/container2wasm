@@ -78,3 +78,6 @@ replace github.com/containerd/stargz-snapshotter => github.com/ktock/stargz-snap
 replace github.com/containerd/containerd => github.com/ktock/containerd v1.2.1-0.20240109162750-28ec64e033db
 
 replace github.com/containerd/stargz-snapshotter/estargz => github.com/ktock/stargz-snapshotter/estargz v0.0.0-20240304123548-c3fcce188d68
+
+// FIXME: Temporary use a forked repostory which removed an unused package for reducing dependencies (see #454).
+replace github.com/containers/gvisor-tap-vsock => github.com/ktock/gvisor-tap-vsock v0.0.0-20250428083527-5f02d9ba79d4

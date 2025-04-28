@@ -35,3 +35,6 @@ replace github.com/insomniacslk/dhcp => github.com/ktock/insomniacslk-dhcp v0.0.
 
 // Patched for enabling to compile it to wasi
 replace github.com/u-root/uio => github.com/ktock/u-root-uio v0.0.0-20230911142931-5cf720bc8a29
+
+// FIXME: Temporary use a forked repostory which removed an unused package for reducing dependencies (see #454).
+replace github.com/containers/gvisor-tap-vsock => github.com/ktock/gvisor-tap-vsock v0.0.0-20250428083527-5f02d9ba79d4
