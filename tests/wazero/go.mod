@@ -29,3 +29,6 @@ require (
 	golang.org/x/tools v0.28.0 // indirect
 	gvisor.dev/gvisor v0.0.0-20240916094835-a174eb65023f // indirect
 )
+
+// FIXME: Temporary use a forked repostory which removed an unused package for reducing dependencies (see #454).
+replace github.com/containers/gvisor-tap-vsock => github.com/ktock/gvisor-tap-vsock v0.0.0-20250428083527-5f02d9ba79d4

@@ -34,8 +34,6 @@ github.com/containerd/ttrpc v1.2.2 h1:9vqZr0pxwOF5koz6N0N3kJ0zDHokrcPxIR/ZR2YFtO
 github.com/containerd/ttrpc v1.2.2/go.mod h1:sIT6l32Ph/H9cvnJsfXM5drIVzTr5A2flTf1G5tYZak=
 github.com/containerd/typeurl/v2 v2.1.1 h1:3Q4Pt7i8nYwy2KmQWIw2+1hTvwTE/6w9FqcttATPO/4=
 github.com/containerd/typeurl/v2 v2.1.1/go.mod h1:IDp2JFvbwZ31H8dQbEIY7sDl2L3o3HZj1hsSQlywkQ0=
-github.com/containers/gvisor-tap-vsock v0.8.5 h1:s7PA8znsZ4mamev5nNLsQqduYSlz1Ze5TWjfXnAfpEs=
-github.com/containers/gvisor-tap-vsock v0.8.5/go.mod h1:A2e733OAwqSmHtWXF1WRbDZcqaZgskR5F0qk1daSz/k=
 github.com/coreos/etcd v3.3.10+incompatible/go.mod h1:uF7uidLiAD3TWHmW31ZFd/JWoc32PjwdhPthX9715RE=
 github.com/coreos/go-etcd v2.0.0+incompatible/go.mod h1:Jez6KQU2B/sWsbdaef3ED8NzMklzPG4d5KIOhIy30Tk=
 github.com/coreos/go-semver v0.2.0/go.mod h1:nnelYz7RCh+5ahJtPPxZlU+153eP4D4r3EedlOD2RNk=
@@ -155,6 +153,8 @@ github.com/kr/pty v1.1.8/go.mod h1:O1sed60cT9XZ5uDucP5qwvh+TE3NnUj51EiZO/lmSfw=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
 github.com/ktock/containerd v1.2.1-0.20240109162750-28ec64e033db h1:so+Hwk3aTFB1Ee8iW6gUwzpbRALU5A4GaHDdgbv8MaU=
 github.com/ktock/containerd v1.2.1-0.20240109162750-28ec64e033db/go.mod h1:L/Hn9qylJtUFT7cPeM0Sr3fATj+WjHwRQ0lyrYk3OPY=
+github.com/ktock/gvisor-tap-vsock v0.0.0-20250428083527-5f02d9ba79d4 h1:TzboFURt0d5UHm/UpiF343OAG6IgScw26WJxvvz4pu0=
+github.com/ktock/gvisor-tap-vsock v0.0.0-20250428083527-5f02d9ba79d4/go.mod h1:A2e733OAwqSmHtWXF1WRbDZcqaZgskR5F0qk1daSz/k=
 github.com/ktock/insomniacslk-dhcp v0.0.0-20230911142651-b86573a014b1 h1:KD92SLhTiV7HRgw3BicNh7mPT1+OpRpaWvyIQLT9by8=
 github.com/ktock/insomniacslk-dhcp v0.0.0-20230911142651-b86573a014b1/go.mod h1:h+MxyHxRg9NH3terB1nfRIUaQEcI0XOVkdR9LNBlp8E=
 github.com/ktock/p9 v0.0.0-20240109162600-dac0f97fe886 h1:w26G030q4XUqgRPaGfQcyFi1a5R4Nt9VC+6P07c7CrU=

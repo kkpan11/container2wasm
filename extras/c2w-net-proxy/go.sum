@@ -2,8 +2,6 @@ github.com/Microsoft/go-winio v0.6.2 h1:F2VQgta7ecxGYO8k3ZZz3RS8fVIXVxONVUPlNERo
 github.com/Microsoft/go-winio v0.6.2/go.mod h1:yd8OoFMLzJbo9gZq8j5qaps8bJ9aShtEA8Ipt1oGCvU=
 github.com/apparentlymart/go-cidr v1.1.0 h1:2mAhrMoF+nhXqxTzSZMUzDHkLjmIHC+Zzn4tdgBZjnU=
 github.com/apparentlymart/go-cidr v1.1.0/go.mod h1:EBcsNrHc3zQeuaeCeCtQruQm+n9/YjEn/vI25Lg7Gwc=
-github.com/containers/gvisor-tap-vsock v0.8.5 h1:s7PA8znsZ4mamev5nNLsQqduYSlz1Ze5TWjfXnAfpEs=
-github.com/containers/gvisor-tap-vsock v0.8.5/go.mod h1:A2e733OAwqSmHtWXF1WRbDZcqaZgskR5F0qk1daSz/k=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -28,6 +26,8 @@ github.com/jsimonetti/rtnetlink v0.0.0-20200117123717-f846d4f6c1f4/go.mod h1:WGu
 github.com/jsimonetti/rtnetlink v0.0.0-20201009170750-9c6f07d100c1/go.mod h1:hqoO/u39cqLeBLebZ8fWdE96O7FxrAsRYhnVOdgHxok=
 github.com/jsimonetti/rtnetlink v0.0.0-20201110080708-d2c240429e6c/go.mod h1:huN4d1phzjhlOsNIjFsw2SVRbwIHj3fJDMEU2SDPTmg=
 github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
+github.com/ktock/gvisor-tap-vsock v0.0.0-20250428083527-5f02d9ba79d4 h1:TzboFURt0d5UHm/UpiF343OAG6IgScw26WJxvvz4pu0=
+github.com/ktock/gvisor-tap-vsock v0.0.0-20250428083527-5f02d9ba79d4/go.mod h1:A2e733OAwqSmHtWXF1WRbDZcqaZgskR5F0qk1daSz/k=
 github.com/ktock/insomniacslk-dhcp v0.0.0-20230911142651-b86573a014b1 h1:KD92SLhTiV7HRgw3BicNh7mPT1+OpRpaWvyIQLT9by8=
 github.com/ktock/insomniacslk-dhcp v0.0.0-20230911142651-b86573a014b1/go.mod h1:h+MxyHxRg9NH3terB1nfRIUaQEcI0XOVkdR9LNBlp8E=
 github.com/ktock/u-root-uio v0.0.0-20230911142931-5cf720bc8a29 h1:BNd7VYl9yNjxsA4Bt9YKAyKJKIymo1v9f7M2cWhh9iU=
