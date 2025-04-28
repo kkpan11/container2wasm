@@ -5,6 +5,8 @@
 
 # container2wasm: Container to WASM converter
 
+[![test workflow](https://github.com/container2wasm/container2wasm/actions/workflows/tests.yml/badge.svg)](https://github.com/container2wasm/container2wasm/actions/workflows/tests.yml?query=branch%3Amain++)
+
 container2wasm is a container-to-wasm image converter that enables to run the container on WASM.
 
 - Converts a container to WASM with emulation by Bochs (for x86_64 containers), TinyEMU (for riscv64 containers) and QEMU.
