@@ -69,7 +69,7 @@ $ docker run --rm -p 8080:80 \
 
 The server started by the above steps provides the following pages.
 
-![Container on browser](./docs/images/emscripten-qemu-alpine-net-browser.png)
+![Container on browser](../../docs/images/emscripten-qemu-alpine-net-browser.png)
 
 ### `localhost:8080?net=browser` 
 
