@@ -5,6 +5,8 @@ Multicore CPUs can also be enabled leveraging MTTCG(Multi-Threded TCG).
 
 [Networking](../networking) is also enabled.
 
+For a smaller example without enabling of networking, refer to [`../emscripten-simple/`](../emscripten-simple/).
+
 > For differences between this approach and WASI-on-browser approach, refer to [`../../examples/wasi-browser/`](../../examples/wasi-browser/).
 
 ## Step 1: Converting an image to Wasm
