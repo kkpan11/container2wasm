@@ -137,6 +137,8 @@ $ c2w --to-js alpine:3.20 /tmp/out-js/htdocs/
 The following is an example of running the image on browser relying on [xterm-pty](https://github.com/mame/xterm-pty).
 This example serves the image on `localhost:8080` using apache http server.
 
+> Or, you can also try a smaller example [`./emscripten-simple`](./examples/emscripten-simple/) without webpack dependencies.
+
 ```console
 $ ( cd ./examples/emscripten/htdocs/ && npx webpack && cp -R index.html dist vendor/xterm.css /tmp/out-js/htdocs/ )
 $ wget -O /tmp/c2w-net-proxy.wasm https://github.com/ktock/container2wasm/releases/download/v0.5.0/c2w-net-proxy.wasm
