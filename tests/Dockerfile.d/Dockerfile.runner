@@ -40,7 +40,12 @@ ARG GOLANG_VERSION
 ARG WASMER_VERSION
 ARG WASMTIME_VERSION
 
-RUN apt-get update && apt-get install -y ca-certificates iptables openssl pigz xz-utils curl wget
+RUN apt-get update && apt-get install -y ca-certificates iptables openssl pigz xz-utils curl wget python3 python3-pip
+
+COPY ./tests/scripts/runner/requirements.txt /
+RUN pip install -r /requirements.txt
+COPY ./tests/scripts/runner/run_browser.py /bin/
+RUN chmod 755 /bin/run_browser.py
 
 # install docker
 ENV DOCKER_TLS_CERTDIR=/certs
