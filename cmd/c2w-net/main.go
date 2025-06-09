@@ -30,6 +30,9 @@ func main() {
 	var (
 		debug         = flag.Bool("debug", false, "enable debug print")
 		listenWS      = flag.Bool("listen-ws", false, "listen on a websocket port specified as argument")
+		enableTLS     = flag.Bool("enable-tls", false, "enable TLS for the websocket connection")
+		wsCert        = flag.String("ws-cert", "", "TLS cert for ws connection")
+		wsKey         = flag.String("ws-key", "", "TLS key for ws connection")
 		invoke        = flag.Bool("invoke", false, "invoke the container with NW support")
 		mac           = flag.String("mac", vmMAC, "mac address assigned to the container")
 		wasiAddr      = flag.String("wasi-addr", "127.0.0.1:1234", "IP address used to communicate between wasi and network stack (valid only with invoke flag)") // TODO: automatically use empty random port or unix socket
@@ -121,8 +124,14 @@ func main() {
 				log.Printf("forwarding finished: %v\n", err)
 			}
 		}))
-		if err := http.ListenAndServe(socketAddr, nil); err != nil {
-			panic(err)
+		if *enableTLS {
+			if err := http.ListenAndServeTLS(socketAddr, *wsCert, *wsKey, nil); err != nil {
+				panic(err)
+			}
+		} else {
+			if err := http.ListenAndServe(socketAddr, nil); err != nil {
+				panic(err)
+			}
 		}
 		return
 	}

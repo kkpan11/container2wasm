@@ -4,6 +4,7 @@ import { setupWorker } from "msw/browser";
 var accepted = false;
 let curSocket = null;
 let eventQueue = [];
+let stackWorker = null;
 
 export function Start(address, stackWorkerFile, stackImage, readyCallback) {
     const mockServer = ws.link(address);
@@ -30,7 +31,7 @@ export function Start(address, stackWorkerFile, stackImage, readyCallback) {
     const worker = setupWorker(...handlers);
     worker.start()
 
-    let stackWorker = new Worker(stackWorkerFile);
+    stackWorker = new Worker(stackWorkerFile);
 
     let conn = createStack(stackWorker, stackImage, readyCallback);
     registerConnBuffer(conn.toNet, conn.fromNet);
