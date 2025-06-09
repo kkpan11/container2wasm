@@ -1,8 +1,10 @@
 import { ws } from 'msw'
 import { setupWorker } from "msw/browser";
 
+let stackWorker = null;
+
 export async function createContainerWASI(vmImage, imageAddr, stackWorkerPath, mounterWasmURL) {
-    let stackWorker = new Worker(stackWorkerPath);
+    stackWorker = new Worker(stackWorkerPath);
     let cert = null;
     let net = null;
     await new Promise((resolve) => {
@@ -101,7 +103,7 @@ function startQEMUWasm(address, stackWorkerFile, mounterWasmURL, imageAddr, read
     const worker = setupWorker(...handlers);
     worker.start()
 
-    let stackWorker = new Worker(stackWorkerFile);
+    stackWorker = new Worker(stackWorkerFile);
 
     let conn = createStack(stackWorker, imageAddr, mounterWasmURL, readyCallback);
     registerConnBuffer(conn.toNet, conn.fromNet);
