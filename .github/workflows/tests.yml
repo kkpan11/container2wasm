@@ -44,6 +44,21 @@ jobs:
       run: |
         make test
 
+  browser:
+    runs-on: ubuntu-24.04
+    name: BrowserTests
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: ["x86_64", "riscv64", "aarch64"]
+    steps:
+    - uses: actions/checkout@v4
+    - name: test
+      env:
+        GO_TEST_FLAGS: -run TestBrowsers/.*arch=${{ matrix.arch }}.*
+      run: |
+        make test
+
   # benchmark:
   #   runs-on: ubuntu-24.04
   #   name: Benchmark
